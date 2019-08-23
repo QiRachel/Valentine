@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta content="yes" name="mobile-web-app-capable">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <title>七夕</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.transit.js"></script>
+   
+   <link rel='stylesheet' href='./css/page1.css'/>
+   <link rel='stylesheet' href='./css/page2.css'/>
+   <link rel='stylesheet' href='./css/page3.css'/>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+	 #audio{
+            width: 0;
+            height: 0;
+    }
+	
+	
+		
+    ul,
+    li {
+        list-style-type: none;
+    }
+    /*主体部分*/
+    #content {
+        width    : 100%;
+        height   : 100%;
+        overflow : hidden;
+        position : absolute;
+        border   : 1px solid #ccc;
+    }
+    
+    .content-wrap {
+        position: relative;
+    }
+    .content-wrap > li {
+        width: 100%;
+        height: 100%;
+        color: red;
+        float: left;
+        overflow: hidden;
+        position: relative;
+    }
+	
+	.music_btn{
+	    width: 5.5rem;
+		height: 5.5rem;
+		background: url(./image/music.png) center/60% no-repeat;
+		 position: absolute;
+		left:6%;
+		top:6%;
+		z-index:99999;
+	}
+	.music_btn.active{
+		animation: xz 4s linear infinite;
+	}
+	@keyframes xz{
+		0%{transform: rotateZ(0deg)}
+		100%{transform: rotateZ(360deg)}
+	}
+	@-webkit-keyframes xz{
+		0%{transform: rotateZ(0deg)}
+		100%{transform: rotateZ(360deg)}
+	}
+	@-moz-keyframes xz{
+		0%{transform: rotateZ(0deg)}
+		100%{transform: rotate(360deg)}
+	}
+	
+	.charector {
+        width: 151px;
+        height: 291px;
+        background: url(./image/boy.png) -0px -291px no-repeat;
+        position: absolute;
+        left: 6%;
+        top: 55%;
+        z-index: 3;
+    }
+	.boyOriginal {
+    	background-position: -150px -0px;
+    }
+    .slowWalk{
+        animation: person-slow 1s infinite step-start;
+        -webkit-animation: person-slow 1s infinite step-start;
+        -moz-animation: person-slow 1s infinite step-start;
+    
+    }
+
+    @keyframes person-slow {
+        0% {
+            background-position: -0px -291px;
+        }
+        25% {
+            background-position: -602px -0px;
+        }
+        50% {
+            background-position: -302px -291px;
+        }
+        75% {
+            background-position: -151px -291px;
+        }
+        100% {
+            background-position: -0px -291px;
+        }
+    }
+
+    @-webkit-keyframes person-slow {
+        0% {
+            background-position: -0px -291px;
+        }
+        25% {
+            background-position: -602px -0px;
+        }
+        50% {
+            background-position: -302px -291px;
+        }
+        75% {
+            background-position: -151px -291px;
+        }
+        100% {
+            background-position: -0px -291px;
+        }
+    }
+
+    @-moz-keyframes person-slow {
+        0% {
+            background-position: -0px -291px;
+        }
+        25% {
+            background-position: -602px -0px;
+        }
+        50% {
+            background-position: -302px -291px;
+        }
+        75% {
+            background-position: -151px -291px;
+        }
+        100% {
+            background-position: -0px -291px;
+        }
+    }
+    /*停止走路*/
+    .pauseWalk {
+        animation-play-state: paused;
+        -webkit-animation-play-state: paused;
+        -moz-animation-play-state: paused;
+    }
+
+    .slowFlowerWalk {
+        -webkit-animation-name: person-flower;
+        -webkit-animation-duration: 950ms;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: step-start;
+        -moz-animation-name: person-flower;
+        -moz-animation-duration: 950ms;
+        -moz-animation-iteration-count: infinite;
+        -moz-animation-timing-function: step-start;
+    }
+
+    @keyframes person-flower {
+        0% {
+            background-position: -453px -0px;
+        }
+        25% {
+            background-position: -904px -0px;
+        }
+        50% {
+            background-position: -451px -0px;
+        }
+        75% {
+            background-position: -753px -0px;
+        }
+        100% {
+            background-position: -300px -0px;
+        }
+    }
+
+    @-webkit-keyframes person-flower {
+        0% {
+            background-position: -453px -0px;
+        }
+        25% {
+            background-position: -904px -0px;
+        }
+        50% {
+            background-position: -451px -0px;
+        }
+        75% {
+            background-position: -753px -0px;
+        }
+        100% {
+            background-position: -300px -0px;
+        }
+    }
+
+    @-moz-keyframes person-flower {
+        0% {
+            background-position: -453px -0px;
+        }
+        25% {
+            background-position: -904px -0px;
+        }
+        50% {
+            background-position: -451px -0px;
+        }
+        75% {
+            background-position: -753px -0px;
+        }
+        100% {
+            background-position: -300px -0px;
+        }
+    }
+
+    .boy-rotate {
+        -webkit-animation-name: boy-rotate;
+        -webkit-animation-duration: 850ms;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: step-start;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-name: boy-rotate;
+        -moz-animation-duration: 850ms;
+        -moz-animation-iteration-count: 1;
+        -moz-animation-timing-function: step-start;
+        -moz-animation-fill-mode: forwards;
+    }
+
+    @-webkit-keyframes boy-rotate {
+        0% {
+            background-position: -603px -291px;
+        }
+        16.7% {
+            background-position: -150px -0px;
+        }
+        33.4% {
+            background-position: -453px -291px;
+        }
+        50.1% {
+            background-position: -0px -0px;
+        }
+        66.8% {
+            background-position: -903px -291px;
+        }
+        83.5% {
+            background-position: -753px -291px;
+        }
+        100% {
+            background-position: -603px -291px;
+        }
+    }
+
+    @-moz-keyframes boy-rotate {
+        0% {
+            background-position: -603px -291px;
+        }
+        16.7% {
+            background-position: -150px -0px;
+        }
+        33.4% {
+            background-position: -453px -291px;
+        }
+        50.1% {
+            background-position: -0px -0px;
+        }
+        66.8% {
+            background-position: -903px -291px;
+        }
+        83.5% {
+            background-position: -753px -291px;
+        }
+        100% {
+            background-position: -603px -291px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id='content'>
+        <ul class='content-wrap'>
+            <!-- 第一副画面 -->
+            <li>
+            	<div class="a_background">
+                    <div class="a_background_top"></div>
+                    <div class="a_background_middle"></div>
+                    <div class="a_background_bottom"></div>
+                </div>
+                <!-- 云 -->
+                <div class="cloudArea">
+                    <div class="cloud cloud1 smallcloudanimal"></div>
+                    <div class="cloud cloud2 bigcloudanimal"></div>
+                </div>
+                <!-- 太阳 -->
+                <div class="sun sunanimal" id="sun"></div>
+			</li>
+            <!-- 第二副画面 -->
+            <li> 
+            	<!-- 背景图 -->
+                <div class="b_background"></div>
+                <div class="b_background_preload"></div>
+                <!-- 商店 -->
+                <div class="shop">
+                    <div class="door">
+                        <div class="door-left"></div>
+                        <div class="door-right"></div>
+                    </div>
+                    <!-- 灯 -->
+                    <div class="lamp"></div>
+                </div>
+                <!-- 鸟 -->
+                <div class="bird"></div>
+			</li>
+            <!-- 第三副画面 -->
+            <li>
+                <!-- 背景图 -->
+                <div class="c_background">
+                    <div class="c_background_top"></div>
+                    <div class="c_background_middle"></div>
+                    <div class="c_background_botton"></div>
+                </div>
+                <!-- 小女孩 -->
+                <div class="girl"></div>
+                <div class="bridge-bottom">
+                    <div class="water">
+                        <div id="water1" class="water_1"></div>
+                        <div id="water2" class="water_2"></div>
+                        <div id="water3" class="water_3"></div>
+                        <div id="water4" class="water_4"></div>
+                    </div>
+                </div>
+                <!-- 星星 -->
+                <ul class="stars">
+                    <li class="star stars1 starshake"></li>
+                    <li class="star stars2 "></li>
+                    <li class="star stars3 "></li>
+                    <li class="star stars4 starshake"></li>
+                    <li class="star stars5 starshake"></li>
+                    <li class="star stars6 starshake"></li>
+                </ul>
+                <div id="mainDiv">
+                    <div id="loveHeart">
+                        <canvas id="garden"></canvas>
+                    </div>
+                </div>
+                <!-- 飘花 -->
+                <div id="snowflake"></div>
+			</li>
+        </ul>
+    </div>
+    <div class="charector" id="boy"></div>
+	<div class="music_btn"></div>
+	<div class="music">
+			<div class="bg1"></div>
+			<audio id="audio" src="./image/music.mp3"></audio>
+	</div>
+	
+    <script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+	<script>
+    var audio = document.getElementById("audio");
+    $('.music_btn').click(function(){
+        clickA();
+        $(this).toggleClass('active');
+    })
+    function clickA() {
+        if (audio.paused) {
+            audio.play();
+        }else{
+            audio.pause();
+        }
+    }
+	
+	<!-- Window.onload=function（）{ -->
+		<!-- setTimeout(function() { -->
+				<!-- audio.play() -->
+			<!-- }, 2000); -->
+
+	<!-- } -->
+</script>
+    <script>
+        var offsetX = $("#loveHeart").width() / 2;
+        // var offsetY = $("#loveHeart").height() / 2 - 55;
+        var offsetY = $("#loveHeart").height() / 2 - 75;
+        var offsetY = $("#loveHeart").height() / 2;
+    </script>
+    <script type="text/javascript">
+        var container = $("#content");
+        var visualWidth = container.width();
+        var visualHeight = container.height();
+        var element = container.find(":first");
+        var slides = $('.content-wrap>li');
+        //设置li页面总宽度
+        element.css({
+            width  : (slides.length * visualWidth) + 'px',
+            height : visualHeight + 'px'
+        });
+        // 设置每一个页面li的宽度
+        $.each(slides, function(index,item) {
+            var slide = slides.eq(index); //获取到每一个li元素    
+            slide.css({
+                width  : visualWidth + 'px',
+                height : visualHeight + 'px'
+                
+            })
+        });
+
+        //滚动
+        var pageSwiper = {
+            scroll :function (time,proportionX) {
+                var distX = visualWidth * proportionX;
+                this.scrollTo(distX,time);
+            },
+            scrollTo : function(x, speed) {
+                element.css({
+                    "transition-timing-function": "linear",
+                    "transition-duration": speed + "ms",
+                    "transform": "translate3d(-" + x + "px,0px,0px)"
+                });
+            }
+        }
+
+        //swiper.scrollTo(width*2,2000);
+
+        // 计算移动距离
+        function calculateDist(direction, proportion) {
+            return (direction == "x" ?
+                visualWidth : visualHeight) * proportion;
+        }
+
+
+        var animationEnd = (function() {
+                var explorer = navigator.userAgent;
+                if (~explorer.indexOf("WebKit")) {
+                    return "webkitAnimationEnd"
+                }
+                return "animationend"
+            }
+        )();
+
+        var config = {
+            setTime: {
+                walkToThird: 5000,
+                walkToMiddle: 5000,
+                walkToEnd: 4000,
+                walkTobridge: 2000,
+                bridgeWalk: 2000,
+                walkToShop: 1500,
+                walkOutShop: 1500,
+                openDoorTime: 800,
+                shutDoorTime: 500,
+                waitRotate: 850,
+                waitFlower: 800
+            },
+        }
+        //boy 
+        var boyWalk = {
+            //获取dom高度，坐标
+            getValue : function(className) {
+                var $elem = $('' + className + '');
+                // 走路的路线坐标
+                return {
+                    height: $elem.height(),
+                    top: $elem.position().top,
+                };
+            },
+            //修正boy
+            locateBoy : function (className) {
+                var middleEle = this.getValue(className);
+                this.boydom.css({
+                    top:middleEle.top + middleEle.height/2 - this.boyheigth + 25
+                })
+            },
+            walkRun:function (time, distX, distY) {
+                var runtime = time || 3000;
+                // 脚动作
+                var walkplay = $.Deferred();
+                // 恢复走路
+                this.restoreWalk();
+                // 运动的属性
+                var options = {
+                    'left': distX + 'px',
+                    'top': distY ? distY : undefined
+                };
+
+                this.boydom.transition(
+                    options,
+                    runtime,
+                    'linear',
+                     function(){
+                        walkplay.resolve()
+                     }
+                )
+                return walkplay;
+            },
+            walkTo : function(time, proportionX, proportionY) {
+                var distX = calculateDist('x', proportionX);
+                var distY = calculateDist('y', proportionY);
+                return this.walkRun(time, distX, distY);
+            },
+            slowWalk:function(){
+                this.boydom.addClass('slowWalk');
+            },
+            pauseWalk:function () {
+                this.boydom.addClass('pauseWalk');
+            },
+            // 恢复走路
+            restoreWalk:function() {
+                this.boydom.removeClass('pauseWalk');
+            },
+            //买花动画
+            doorAction:function(left,right,time){
+                var doorLeft = $(".door-left"),
+                 doorRight = $(".door-right");
+                var doorplayer = $.Deferred();
+                var count = 0;
+                complete = function(){
+                    if(count ==1){
+                        doorplayer.resolve();
+                    }
+                    count ++;
+                }
+                doorLeft.transition({
+                    'left':left
+                },time,complete);
+                doorRight.transition({
+                    "left": right
+                }, time, complete);
+                return doorplayer;
+            },
+            openDoor:function(time){
+                return this.doorAction("-50%","100%",time)
+            },
+            closeDoor:function(time){
+                 return this.doorAction("0","50%",time)
+            },
+            goShop:function(time){
+                this.restoreWalk();
+                var doorele = $('.door');
+                var shopplayer = $.Deferred();
+                var dooroffset = doorele.offset(),
+                    leftoffset = dooroffset.left,
+                    moveX = leftoffset + doorele.width()/2 - ( this.boydom.offset().left + this.boydom.width()/2);
+                this.moveFlowerX = moveX;
+                var options = {
+                    transform: "translateX(" + moveX + "px),scale(0.3,0.3)",
+                    opacity: 0
+                };
+                this.boydom.transition(options, time, "linear", function() {
+                    shopplayer.resolve();
+                });
+                return shopplayer;
+            },
+            outShop:function(time){
+                var outdefer = $.Deferred();
+                this.restoreWalk();
+                var options = {
+                    transform: "translate(" + this.moveFlowerX + "px,0px),scale(1,1)",
+                    opacity: 1
+                };
+                this.boydom.transition(options, time, "linear", function() {
+                    outdefer.resolve();
+                });
+                // walkPlay.done(function() {
+                //     defer.resolve()
+                // });
+                return outdefer
+            },
+            lightUp:function(){
+                $(".b_background").addClass("lamp-bright")
+            },
+            lightDown:function(){
+                $(".b_background").removeClass("lamp-bright")
+            },
+            takeFlower:function(time){
+                var boyele = this.boydom,
+                    takeplayer = $.Deferred();
+                setTimeout(function() {
+                    // 取到花
+                    boyele.addClass('slowFlowerWalk');
+                    takeplayer.resolve();
+                }, time);
+                return takeplayer;
+            },
+            buyFlower:function(){
+                var buyplayer = $.Deferred();
+                this.openDoor(config.setTime.openDoorTime).then(()=>{
+                    this.lightUp();
+                    return this.goShop(config.setTime.walkToShop);
+                }).then(()=>{
+                   return this.takeFlower(config.setTime.waitFlower)
+                }).then(()=>{
+                    return this.outShop(config.setTime.walkOutShop);
+                }).then(()=>{
+                    this.closeDoor(config.setTime.shutDoorTime);
+                    this.lightDown();
+                    buyplayer.resolve();
+                });
+                return buyplayer;
+            },
+            resetOriginal:function(){
+                this.pauseWalk();
+                this.boydom.removeClass("slowWalk slowFlolerWalk").addClass("boyOriginal")
+            },
+            init:function(){
+                var boyele = $("#boy");
+                this.boydom = boyele;
+                this.boywidth = boyele.width();
+                this.boyheigth = boyele.height();
+
+                boyWalk.locateBoy('.a_background_middle');
+                this.slowWalk();
+            },
+            rotate: function(callback) {
+                this.restoreWalk();
+                this.boydom.addClass("boy-rotate");
+                this.boydom.off().on(animationEnd,function(){
+                    if(callback){
+                        callback();
+                        //$(this).off()
+                    }
+                })
+            },
+        }
+
+        //pageSwiper.scroll(100,2)
+
+        boyWalk.init();
+        // boyWalk.walkTo(3000,0.5).then(function () {
+        //     boyWalk.pauseWalk()
+        //     return boyWalk.buyFlower()
+        // }).then(()=>{
+        //     pageSwiper.scroll(2000,2)
+        // });
+
+
+        var girl = {
+            elem: $(".girl"),
+            getHeight: function() {
+                return this.elem.height()
+            },
+            rotate: function() {
+                this.elem.addClass("girl-rotate")
+            },
+            setOffset: function() {
+                this.elem.css({
+                    left: visualWidth / 2,
+                    top: page3.bridgeY - this.getHeight()
+                })
+            },
+            getOffset: function() {
+                return this.elem.offset()
+            },
+            getWidth: function() {
+                return this.elem.width()
+            }
+        };
+        var getValue = function(className) {
+            var $elem = $("" + className + "");
+            return {
+                height: $elem.height(),
+                top: $elem.position().top
+            }
+        };
+        var page3 = {
+            bridgeEle : $('.c_background_middle'),
+            bridgeY :getValue(".c_background_middle").top,
+
+        }
+        girl.setOffset();
+
+        boyWalk.walkTo(config.setTime.walkToThird,0.4).then(()=>{
+            pageSwiper.scroll(config.setTime.walkToMiddle,1);
+            return boyWalk.walkTo(config.setTime.walkToThird,0.5);
+        }).then(()=>{
+            boyWalk.pauseWalk()
+            return boyWalk.buyFlower()
+        }).then(()=>{
+            pageSwiper.scroll(config.setTime.walkToEnd,2);
+            return boyWalk.walkTo(config.setTime.walkToEnd,0.15)
+        }).then(function () {
+            return boyWalk.walkTo(config.setTime.walkTobridge,0.38,(page3.bridgeY-girl.getHeight())/visualHeight)
+        }).then(()=>{
+            startHeartAnimation();
+            boyWalk.resetOriginal();
+            setTimeout(function() {
+                girl.rotate();
+                boyWalk.rotate(function() {
+                    snowflake();
+                })
+            }, )
+        });
+
+        var snowflakeURl = ["./image/snow0.png", "./image/snow1.png","./image/snow2.png","./image/snow3.png","./image/snow4.png","./image/snow5.png"]
+
+        function snowflake() {
+            var $flakeContainer = $("#snowflake");
+            function getImagesName() {
+                return snowflakeURl[[Math.floor(Math.random() * 6)]]
+            }
+            function createSnowBox() {
+                var url = getImagesName();
+                return $('<div class="snowbox" />').css({
+                    "width": 41,
+                    "height": 41,
+                    "position": "absolute",
+                    "backgroundSize": "cover",
+                    "zIndex": 100000,
+                    "top": "-41px",
+                    "backgroundImage": "url(" + url + ")"
+                }).addClass("snowRoll")
+            }
+            setInterval(function() {
+                var startPositionLeft = Math.random() * visualWidth - 100
+                    , startOpacity = 1;
+                endPositionTop = visualHeight - 40,
+                    endPositionLeft = startPositionLeft - 100 + Math.random() * 500,
+                    duration = visualHeight * 10 + Math.random() * 5000;
+                var randomStart = Math.random();
+                randomStart = randomStart < 0.5 ? startOpacity : randomStart;
+                var $flake = createSnowBox();
+                $flake.css({
+                    left: startPositionLeft,
+                    opacity: randomStart
+                });
+                $flakeContainer.append($flake);
+                $flake.transition({
+                    top: endPositionTop,
+                    left: endPositionLeft,
+                    opacity: 0.7
+                }, duration, "ease-out", function() {
+                    $(this).remove()
+                })
+            }, 200)
+        }
+    </script>
+    <script>
+        // pageSwiper.scroll(100,2);
+        // startHeartAnimation();
+    </script>
+</body>
+
+</html>

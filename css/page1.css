@@ -1,0 +1,144 @@
+.a_background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.a_background_top{
+    width: 100%;
+    height: 71.6%;
+    background-image: url("../image/page1bgtop.png");
+    background-size: 100% 100%;
+}
+
+
+.a_background_middle{
+    width: 100%;
+    height: 13.1%;
+    background-image: url("../image/page1bgmiddle.png");
+    background-size: 100% 100%;
+}
+
+.a_background_bottom{
+    width: 100%;
+    height: 15.3%;
+    background-image: url("../image/page1bgbuttom.png");
+    background-size: 100% 100%;
+}
+
+/*云*/
+.cloud{
+    z-index: 2;
+    position: absolute;
+}
+.cloud1 {
+    width: 181px;
+    height: 101px;
+    left: -5%;
+    top: 15%;
+    background: url("../image/smallcloud.png");
+}
+        
+    
+.cloud2 {
+    width: 301px;
+    height: 140px;
+    left: -10%;
+    top: 2%;
+    background: url("../image/bigcloud.png");
+}
+
+/*云动画*/
+.smallcloudanimal{
+    animation-name:smallcloudanimal;
+    animation-duration:30s;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: smallcloudanimal;
+    -webkit-animation-duration: 30s;
+    -webkit-animation-iteration: infinite;
+    -moz-animation-name: smallcloudanimal;
+    -moz-animation-duration: 30s;
+    -moz-animation-iteration: infinite;
+}
+
+@keyframes smallcloudanimal{
+0%{
+    left:-5%;
+    }
+100%{
+    left:100%;
+    }
+}
+@-webkit-keyframes smallcloudanimal{
+0%{
+    left:-5%;
+    }
+100%{
+    left:100%;
+    }
+}
+@-moz-keyframes smallcloudanimal{
+0%{
+    left:-5%;
+    }
+100%{
+    left:100%;
+    }
+}
+
+.bigcloudanimal{
+    animation:bigcloudanimal 50s linear 0s infinite;
+    -webkit-animation-name: bigcloudanimal;
+    -webkit-animation-duration: 50s;
+    -webkit-animation-iteration: infinite;
+    -moz-animation-name: bigcloudanimal;
+    -moz-animation-duration: 50s;
+    -moz-animation-iteration: infinite;
+}
+
+@keyframes bigcloudanimal{
+0%{
+    left:-10%;
+    }
+100%{
+    left:100%;
+    }
+}
+@-webkit-keyframes bigcloudanimal{
+0%{
+    left:-10%;
+    }
+100%{
+    left:100%;
+    }
+}
+@-moz-keyframes bigcloudanimal{
+0%{
+    left:-10%;
+    }
+100%{
+    left:100%;
+    }
+}
+
+.sun{
+    height: 201px;
+    width: 201px;
+    background: url("../image/sun.png") no-repeat;
+    position: absolute;
+    top: -20%;
+    right: 10%;
+    z-index: 3;
+}
+
+.sunanimal{
+    animation:sunanimal 100s;
+    -webkit-animation:sunanimal 100s;
+    -moz-animation:sunanimal 100s;
+}
+@keyframes sunanimal{
+    0%{transform: translateX(0) translateY(0);}
+    100%{transform: translateX(-4000px) translateY(400px)}
+
+}
+
